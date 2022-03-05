@@ -18,6 +18,7 @@ public class MemoryMemberRepository implements MemberRepository {
 
     @Override
     public Optional<Member> findyId(Long id) {
+        //Optional : null 처리
         return Optional.ofNullable(store.get(id));
     }
 
@@ -31,5 +32,9 @@ public class MemoryMemberRepository implements MemberRepository {
     @Override
     public List<Member> findAll() {
         return new ArrayList<>(store.values());
+    }
+
+    public void clearStore() {
+        store.clear();
     }
 }
